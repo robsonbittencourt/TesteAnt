@@ -1,0 +1,31 @@
+<project name="teste" basedir="." default="executar">
+	
+	<property name="classes" location="classes"/>
+	<property name="arquivo" value="TesteAnt" />
+	
+	<target name="diretorios">
+		<mkdir dir="classes" />
+	</target>
+	
+	<target name="apagar">
+        <delete dir="classes"/>
+    </target>	
+
+	<target name="compilar" depends="diretorios">
+		<javac srcdir="${basedir}" classpath="${classes}" destdir="${classes}" /> 
+	</target>
+	
+	<target name="empacotar" depends="compilar">
+        <mkdir dir="build/jar"/>
+        <jar destfile="build/jar/TestAnt.jar" basedir="${basedir}/classes">
+            <manifest>
+                <attribute name="Main-Class" value="main.TesteAnt"/>
+            </manifest>
+        </jar>
+    </target>
+
+	<target name="executar" depends="empacotar, apagar">
+		 <java jar="build/jar/TestAnt.jar" fork="true"/>
+	</target>
+
+</project>
