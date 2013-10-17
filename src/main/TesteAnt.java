@@ -7,5 +7,5 @@ public class TesteAnt {
 		System.out.println("Hello Ant!");
 	}
 
-	//teste
+	//teste2
 }
